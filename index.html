@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0c">
+
+  <title>Jordan Fingerhut — Software Engineer</title>
+  <meta name="description" content="Senior Software Engineer with 8+ years of experience. Builder of Greedspot — a real-time Wyckoff-method market terminal — entirely with AI.">
+
+  <meta property="og:title" content="Jordan Fingerhut — Software Engineer">
+  <meta property="og:description" content="Senior Software Engineer with 8+ years of experience. Builder of Greedspot — a real-time Wyckoff-method market terminal — entirely with AI.">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://jordanfing.github.io/fingerhut-cv/">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,500&family=Geist:wght@300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0a0c;
+      --bg-card: #111114;
+      --hairline: #1d1c1a;
+      --hairline-strong: #2a2722;
+      --text: #ece7d9;
+      --text-soft: #b3aea0;
+      --text-muted: #7a7568;
+      --accent: #5fd687;
+      --accent-dim: #2f6a44;
+      --warn: #e87b6a;
+
+      --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+      --font-body: "Geist", "Geist Variable", -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+      --measure: 760px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 350;
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      background-image:
+        radial-gradient(1100px 600px at 80% -10%, rgba(95, 214, 135, 0.06), transparent 60%),
+        radial-gradient(900px 500px at -10% 110%, rgba(232, 123, 106, 0.04), transparent 60%);
+      background-attachment: fixed;
+    }
+
+    ::selection { background: var(--accent); color: var(--bg); }
+
+    a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--hairline-strong);
+      transition: border-color 160ms ease, color 160ms ease;
+    }
+    a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+
+    .download-fab {
+      position: fixed;
+      top: 22px;
+      right: 22px;
+      z-index: 50;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text);
+      background: rgba(17, 17, 20, 0.78);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--hairline-strong);
+      border-radius: 999px;
+      transition: transform 200ms ease, border-color 200ms ease, color 200ms ease;
+    }
+    .download-fab:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .download-fab svg { width: 13px; height: 13px; }
+
+    .wrap {
+      max-width: var(--measure);
+      margin: 0 auto;
+      padding: 96px 28px 120px;
+    }
+
+    .stagger { opacity: 0; transform: translateY(8px); animation: rise 700ms cubic-bezier(.2,.7,.2,1) forwards; }
+    .stagger:nth-child(1) { animation-delay: 60ms; }
+    .stagger:nth-child(2) { animation-delay: 140ms; }
+    .stagger:nth-child(3) { animation-delay: 220ms; }
+    .stagger:nth-child(4) { animation-delay: 300ms; }
+    .stagger:nth-child(5) { animation-delay: 380ms; }
+    @keyframes rise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .live {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .live::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 0 rgba(95, 214, 135, 0.6);
+      animation: pulse 2.4s infinite;
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(95, 214, 135, 0.55); }
+      70%  { box-shadow: 0 0 0 10px rgba(95, 214, 135, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(95, 214, 135, 0); }
+    }
+
+    .hero {
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .hero__name {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(56px, 9vw, 104px);
+      line-height: 0.96;
+      letter-spacing: -0.025em;
+      margin: 18px 0 0;
+      font-variation-settings: "opsz" 144;
+    }
+    .hero__name em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--text);
+      display: inline-block;
+    }
+    .hero__role {
+      margin-top: 28px;
+      font-size: 17px;
+      color: var(--text-soft);
+    }
+    .hero__role b { color: var(--text); font-weight: 500; }
+    .hero__meta {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+    .hero__meta a { border: none; padding-bottom: 1px; border-bottom: 1px dotted var(--hairline-strong); }
+    .hero__meta a:hover { border-bottom-style: solid; }
+    .hero__summary {
+      margin-top: 36px;
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(20px, 2.3vw, 26px);
+      line-height: 1.42;
+      letter-spacing: -0.012em;
+      color: var(--text-soft);
+      max-width: 64ch;
+      font-variation-settings: "opsz" 72;
+    }
+    .hero__summary em { color: var(--text); font-style: italic; }
+
+    section { padding-top: 64px; }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+    .section-head__index {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 0.16em;
+    }
+    .section-head__title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .section-head__rule {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--hairline-strong), transparent);
+    }
+
+    .job__company {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+    .job__company h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 28px;
+      letter-spacing: -0.012em;
+      font-variation-settings: "opsz" 96;
+    }
+    .job__company .right {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .role + .role { margin-top: 28px; }
+    .role__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 18px;
+      margin-bottom: 10px;
+    }
+    .role__title {
+      font-weight: 500;
+      font-size: 15px;
+      color: var(--text);
+      letter-spacing: -0.005em;
+    }
+    .role__title em {
+      font-style: italic;
+      color: var(--text-soft);
+      font-weight: 400;
+      margin-left: 6px;
+    }
+    .role__dates {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .role__list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .role__list li {
+      position: relative;
+      padding: 4px 0 4px 22px;
+      color: var(--text-soft);
+      font-size: 15.5px;
+      line-height: 1.62;
+    }
+    .role__list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 16px;
+      width: 12px;
+      height: 1px;
+      background: var(--hairline-strong);
+    }
+
+    .job + .job { margin-top: 56px; padding-top: 56px; border-top: 1px solid var(--hairline); }
+
+    .featured {
+      position: relative;
+      padding: 36px 32px 34px;
+      border: 1px solid var(--hairline-strong);
+      border-radius: 6px;
+      background: linear-gradient(180deg, rgba(95, 214, 135, 0.035), transparent 60%), var(--bg-card);
+      overflow: hidden;
+      transition: border-color 240ms ease, transform 240ms ease;
+    }
+    .featured:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
+    .featured::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent), transparent);
+      opacity: 0.6;
+    }
+    .featured__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 6px;
+    }
+    .featured h3 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-style: italic;
+      font-size: 36px;
+      margin: 0;
+      letter-spacing: -0.018em;
+      font-variation-settings: "opsz" 96;
+    }
+    .featured__link {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-soft);
+      border: none;
+      border-bottom: 1px dotted var(--hairline-strong);
+      padding-bottom: 1px;
+    }
+    .featured__link:hover { color: var(--accent); border-bottom-color: var(--accent); border-bottom-style: solid; }
+    .featured__tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .featured__body {
+      margin: 18px 0 0;
+      font-size: 15.5px;
+      color: var(--text-soft);
+      line-height: 1.62;
+    }
+    .featured__body + .featured__body { margin-top: 14px; }
+
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .edu-row:last-child { border-bottom: none; }
+    .edu-row__left h4 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 19px;
+      letter-spacing: -0.005em;
+    }
+    .edu-row__left p {
+      margin: 4px 0 0;
+      font-size: 14px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+    .edu-row__dates {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .skills { display: grid; gap: 22px; }
+    .skill-row { display: grid; grid-template-columns: 220px 1fr; gap: 28px; align-items: baseline; }
+    @media (max-width: 640px) { .skill-row { grid-template-columns: 1fr; gap: 6px; } }
+    .skill-row__cat {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .skill-row__list {
+      color: var(--text-soft);
+      font-size: 15.5px;
+      line-height: 1.55;
+    }
+    .skill-row__list span { color: var(--text); font-weight: 400; }
+    .skill-row__list span:not(:last-child)::after { content: " · "; color: var(--text-muted); margin: 0 2px; font-weight: 300; }
+
+    .ack-list { padding: 0; margin: 0; list-style: none; display: grid; gap: 16px; }
+    .ack-list li {
+      padding: 16px 18px;
+      border-left: 2px solid var(--hairline-strong);
+      color: var(--text-soft);
+      font-size: 15.5px;
+      transition: border-color 200ms ease;
+    }
+    .ack-list li:hover { border-left-color: var(--accent); }
+    .ack-list em { font-style: italic; color: var(--text); }
+
+    .langs { display: flex; gap: 36px; flex-wrap: wrap; }
+    .lang { display: flex; align-items: baseline; gap: 12px; }
+    .lang__name {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-style: italic;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+    }
+    .lang__level {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    footer {
+      margin-top: 96px;
+      padding-top: 24px;
+      border-top: 1px solid var(--hairline);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    footer a { border: none; color: var(--text-soft); }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .wrap { padding: 80px 20px 80px; }
+      .download-fab { top: 14px; right: 14px; padding: 9px 13px; font-size: 11px; }
+      .hero__name { font-size: clamp(48px, 13vw, 80px); }
+      .job__company { flex-direction: column; gap: 4px; }
+      .job__company .right { text-align: left; }
+      .role__head { flex-direction: column; gap: 2px; align-items: flex-start; }
+      .featured__head { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <a class="download-fab" href="Fingerhut_Jordan_Resume.pdf" download>
+    Download PDF
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+  </a>
+
+  <main class="wrap">
+    <header class="hero">
+      <span class="eyebrow stagger">CV / 2026</span>
+      <h1 class="hero__name stagger">Jordan<br><em>Fingerhut</em></h1>
+
+      <p class="hero__role stagger">
+        <span class="live">Active</span>
+        &nbsp;&nbsp;<b>Senior Software Engineer</b> at Mercado Libre &nbsp;·&nbsp; Neuquén, Argentina
+      </p>
+
+      <div class="hero__meta stagger">
+        <a href="mailto:fingerhutjordan@gmail.com">fingerhutjordan@gmail.com</a>
+        <a href="https://www.linkedin.com/in/jordanfin" target="_blank" rel="noopener">linkedin.com/in/jordanfin</a>
+        <a href="https://github.com/jordanfing" target="_blank" rel="noopener">github.com/jordanfing</a>
+        <span>+54 9 299 470 4088</span>
+      </div>
+
+      <p class="hero__summary stagger">
+        Software Engineer with <em>8+ years</em> of experience building large-scale applications that impact millions of users, focused on system architecture, scalability, reliability and AI-assisted development.
+      </p>
+    </header>
+
+    <section>
+      <div class="section-head">
+        <span class="section-head__index">01</span>
+        <span class="section-head__title">Experience</span>
+        <span class="section-head__rule"></span>
+      </div>
+
+      <div class="job">
+        <div class="job__company">
+          <h3>Mercado Libre</h3>
+          <div class="right">Argentina &nbsp;·&nbsp; Dec 2020 → Present</div>
+        </div>
+
+        <div class="role">
+          <div class="role__head">
+            <div class="role__title">Senior Software Engineer</div>
+            <div class="role__dates">Mar 2024 → Present</div>
+          </div>
+          <ul class="role__list">
+            <li>Led the scalability redesign of the team's asynchronous task orchestration system, consolidating duplicated flows across countries and products into a single model to sustain rapid growth of the card base; became the de facto owner of the two most critical backend services.</li>
+            <li>Designed system architecture and authored technical RFCs, shifting from pure execution toward technical design; coordinated with other teams the discussions needed to move initiatives forward and drive the required changes, through RFCs, alignment meetings and ongoing cross-team collaboration.</li>
+            <li>Implemented idempotency across card creation and cancellation flows, eliminating duplicate operations on retries and significantly reducing data-consistency incidents and customer support load.</li>
+            <li>Drove recurring security hardening (dependency vulnerability remediation), migrated analytics pipelines to a data warehouse, and became an early adopter of AI tooling (Claude Code and AI agents) to speed up the entire team.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role__head">
+            <div class="role__title">Semi-Senior Software Engineer</div>
+            <div class="role__dates">Dec 2021 → Mar 2024</div>
+          </div>
+          <ul class="role__list">
+            <li>Built analytics dashboards to measure user behavior, identifying improvement opportunities and working closely with the product team to define development goals.</li>
+            <li>Refactored core areas of the codebase from the legacy promises format to async/await, improving readability and maintainability.</li>
+            <li>Enhanced application security by finding and fixing code vulnerabilities.</li>
+            <li>Migrated legacy applications to newer technologies.</li>
+            <li>Delivered two internal tech talks proposing improvements, which were well received by the team.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role__head">
+            <div class="role__title">Junior Software Engineer</div>
+            <div class="role__dates">Dec 2020 → Dec 2021</div>
+          </div>
+          <ul class="role__list">
+            <li>Built and shipped new product features with React.js and Node.js, improving user experience and reducing both the user contact rate and management costs.</li>
+            <li>Developed an internal tool to build emails faster, increasing the team's work speed by up to 50%.</li>
+            <li>Wrote documentation and wiki pages covering processes, features and workflows.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="job__company">
+          <h3>ISSN Prepaid Health Insurance</h3>
+          <div class="right">Argentina &nbsp;·&nbsp; Oct 2017 → Nov 2020</div>
+        </div>
+
+        <div class="role">
+          <div class="role__head">
+            <div class="role__title">Software Engineer</div>
+            <div class="role__dates">Oct 2017 → Nov 2020</div>
+          </div>
+          <ul class="role__list">
+            <li>Performed full-stack development of a virtual platform using React.js, Node.js, Express.js and PostgreSQL, allowing clients to visualize account balance and retirement contributions.</li>
+            <li>Developed a full system from scratch to manage user payments.</li>
+            <li>Migrated a monolithic application to distributed systems, improving maintainability, performance and reliability.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <span class="section-head__index">02</span>
+        <span class="section-head__title">Projects</span>
+        <span class="section-head__rule"></span>
+      </div>
+
+      <article class="featured">
+        <div class="featured__head">
+          <div>
+            <h3>Greedspot</h3>
+            <div class="featured__tag">Personal project</div>
+          </div>
+          <a class="featured__link" href="https://www.thegreedspot.com" target="_blank" rel="noopener">
+            www.thegreedspot.com ↗
+          </a>
+        </div>
+
+        <p class="featured__body">
+          Real-time market terminal centered on the Wyckoff method, combining live multi-asset data, interactive charts and structured analysis workflows into a single workspace for discretionary trading research.
+        </p>
+        <p class="featured__body">
+          <em>Built entirely with AI</em> (Claude Code, spec-driven development, multi-agent workflows, MCP) under my architectural direction — covering specs, design, implementation, code review and CI/CD.
+        </p>
+      </article>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <span class="section-head__index">03</span>
+        <span class="section-head__title">Education</span>
+        <span class="section-head__rule"></span>
+      </div>
+
+      <div class="edu-row">
+        <div class="edu-row__left">
+          <h4>Cultural Inglesa Academy</h4>
+          <p>English course &nbsp;·&nbsp; Neuquén, Argentina</p>
+        </div>
+        <div class="edu-row__dates">Mar 2020 → Mar 2024</div>
+      </div>
+
+      <div class="edu-row">
+        <div class="edu-row__left">
+          <h4>San Ramon Institute</h4>
+          <p>Bachelor's Degree &nbsp;·&nbsp; Buenos Aires, Argentina</p>
+        </div>
+        <div class="edu-row__dates">Mar 2006 → Dec 2011</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <span class="section-head__index">04</span>
+        <span class="section-head__title">Skills</span>
+        <span class="section-head__rule"></span>
+      </div>
+
+      <div class="skills">
+        <div class="skill-row">
+          <div class="skill-row__cat">AI &amp; Productivity</div>
+          <div class="skill-row__list">
+            <span>Claude Code</span><span>Skill creation</span><span>Spec-Driven Development</span><span>Multi-agent workflows</span><span>MCP</span><span>n8n automation</span><span>GenAI tooling</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-row__cat">Languages</div>
+          <div class="skill-row__list">
+            <span>JavaScript</span><span>TypeScript</span><span>Node.js</span><span>Go</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-row__cat">Frontend</div>
+          <div class="skill-row__list">
+            <span>React.js</span><span>Next.js</span><span>GraphQL</span><span>shadcn/ui</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-row__cat">Backend &amp; Architecture</div>
+          <div class="skill-row__list">
+            <span>Express.js</span><span>Distributed &amp; event-driven systems</span><span>RFC design</span><span>Idempotency &amp; resilience patterns</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-row__cat">Data</div>
+          <div class="skill-row__list">
+            <span>BigQuery</span><span>PostgreSQL / MySQL</span><span>MongoDB</span><span>KVS</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-row__cat">Observability &amp; Quality</div>
+          <div class="skill-row__list">
+            <span>Datadog</span><span>New Relic</span><span>Kibana</span><span>OpenTelemetry</span><span>Jest.js</span><span>CI/CD</span><span>Load testing</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-row__cat">Methodologies</div>
+          <div class="skill-row__list">
+            <span>Agile</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <span class="section-head__index">05</span>
+        <span class="section-head__title">Acknowledgments</span>
+        <span class="section-head__rule"></span>
+      </div>
+
+      <ul class="ack-list">
+        <li><em>Promoted to Senior Software Engineer</em> in recognition of my technical leadership, consistent high-quality delivery and positive impact on the team.</li>
+        <li><em>Promoted to Semi-Senior Software Engineer</em>, highlighting my daily effort, a proactive attitude and a positive energy.</li>
+        <li><em>Obtained a scholarship</em> to study English for having scored highest in the last course.</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <span class="section-head__index">06</span>
+        <span class="section-head__title">Languages</span>
+        <span class="section-head__rule"></span>
+      </div>
+
+      <div class="langs">
+        <div class="lang">
+          <span class="lang__name">English</span>
+          <span class="lang__level">Fluent</span>
+        </div>
+        <div class="lang">
+          <span class="lang__name">Spanish</span>
+          <span class="lang__level">Native</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Source &nbsp;·&nbsp; <a href="https://github.com/jordanfing/fingerhut-cv" target="_blank" rel="noopener">github.com/jordanfing/fingerhut-cv</a></span>
+      <span>Written in Typst &nbsp;·&nbsp; 2026</span>
+    </footer>
+  </main>
+</body>
+</html>
