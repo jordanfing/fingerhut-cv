@@ -20,8 +20,7 @@
       const params = new URLSearchParams(location.search);
       const override = params.get('theme');
       const stored = localStorage.getItem('cv-theme');
-      const sys = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      document.documentElement.dataset.theme = override || stored || sys;
+      document.documentElement.dataset.theme = override || stored || 'light';
     })();
   </script>
 
@@ -213,8 +212,7 @@
     }
 
     .hero {
-      padding-bottom: 48px;
-      border-bottom: 1px solid var(--hairline);
+      padding-bottom: 12px;
     }
     .hero__name {
       font-family: var(--font-display);
@@ -264,8 +262,8 @@
     .section-head {
       display: flex;
       align-items: baseline;
-      gap: 18px;
-      margin-bottom: 28px;
+      gap: 14px;
+      margin-bottom: 24px;
     }
     .section-head__index {
       font-family: var(--font-mono);
@@ -281,11 +279,6 @@
       text-transform: uppercase;
       color: var(--text);
       font-weight: 500;
-    }
-    .section-head__rule {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, var(--hairline-strong), transparent);
     }
 
     .job__company {
@@ -561,7 +554,7 @@
       .stagger { opacity: 1 !important; transform: none !important; animation: none !important; }
       .live::before { animation: none !important; box-shadow: none !important; }
 
-      .hero { padding-bottom: 10pt; border-bottom: 0.5pt solid var(--hairline-strong); }
+      .hero { padding-bottom: 6pt; }
       .hero__name { font-size: 32pt !important; line-height: 1; margin-top: 4pt; }
       .hero__role { font-size: 10.5pt; margin-top: 8pt; }
       .hero__meta { font-size: 8.5pt; margin-top: 6pt; gap: 3pt 12pt; }
@@ -648,7 +641,6 @@
       <div class="section-head">
         <span class="section-head__index">01</span>
         <span class="section-head__title">Experience</span>
-        <span class="section-head__rule"></span>
       </div>
 
       <div class="job">
@@ -721,7 +713,6 @@
       <div class="section-head">
         <span class="section-head__index">02</span>
         <span class="section-head__title">Projects</span>
-        <span class="section-head__rule"></span>
       </div>
 
       <article class="featured">
@@ -748,7 +739,6 @@
       <div class="section-head">
         <span class="section-head__index">03</span>
         <span class="section-head__title">Education</span>
-        <span class="section-head__rule"></span>
       </div>
 
       <div class="edu-row">
@@ -772,7 +762,6 @@
       <div class="section-head">
         <span class="section-head__index">04</span>
         <span class="section-head__title">Skills</span>
-        <span class="section-head__rule"></span>
       </div>
 
       <div class="skills">
@@ -825,7 +814,6 @@
       <div class="section-head">
         <span class="section-head__index">05</span>
         <span class="section-head__title">Acknowledgments</span>
-        <span class="section-head__rule"></span>
       </div>
 
       <ul class="ack-list">
@@ -839,7 +827,6 @@
       <div class="section-head">
         <span class="section-head__index">06</span>
         <span class="section-head__title">Languages</span>
-        <span class="section-head__rule"></span>
       </div>
 
       <div class="langs">
