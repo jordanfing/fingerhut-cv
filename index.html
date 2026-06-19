@@ -48,9 +48,9 @@
       background: var(--bg);
       color: var(--text);
       font-family: var(--font-body);
-      font-weight: 350;
-      font-size: 16px;
-      line-height: 1.65;
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
@@ -116,8 +116,8 @@
 
     .eyebrow {
       font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.18em;
+      font-size: 12px;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--text-muted);
     }
@@ -127,8 +127,8 @@
       align-items: center;
       gap: 8px;
       font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.16em;
+      font-size: 12px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--accent);
     }
@@ -168,33 +168,32 @@
     }
     .hero__role {
       margin-top: 28px;
-      font-size: 17px;
+      font-size: 17.5px;
       color: var(--text-soft);
     }
-    .hero__role b { color: var(--text); font-weight: 500; }
+    .hero__role b { color: var(--text); font-weight: 600; }
     .hero__meta {
       margin-top: 22px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px 22px;
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 14px;
       color: var(--text-soft);
     }
     .hero__meta a { border: none; padding-bottom: 1px; border-bottom: 1px dotted var(--hairline-strong); }
     .hero__meta a:hover { border-bottom-style: solid; }
     .hero__summary {
       margin-top: 36px;
-      font-family: var(--font-display);
-      font-weight: 300;
-      font-size: clamp(20px, 2.3vw, 26px);
-      line-height: 1.42;
-      letter-spacing: -0.012em;
+      font-family: var(--font-body);
+      font-weight: 350;
+      font-size: clamp(19px, 2vw, 22px);
+      line-height: 1.55;
+      letter-spacing: -0.005em;
       color: var(--text-soft);
       max-width: 64ch;
-      font-variation-settings: "opsz" 72;
     }
-    .hero__summary em { color: var(--text); font-style: italic; }
+    .hero__summary em { color: var(--text); font-style: normal; font-weight: 500; }
 
     section { padding-top: 64px; }
     .section-head {
@@ -205,16 +204,18 @@
     }
     .section-head__index {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 13px;
       color: var(--accent);
-      letter-spacing: 0.16em;
+      letter-spacing: 0.12em;
+      font-weight: 500;
     }
     .section-head__title {
       font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.22em;
+      font-size: 13px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text);
+      font-weight: 500;
     }
     .section-head__rule {
       flex: 1;
@@ -231,17 +232,17 @@
     }
     .job__company h3 {
       margin: 0;
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 28px;
-      letter-spacing: -0.012em;
-      font-variation-settings: "opsz" 96;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 26px;
+      letter-spacing: -0.018em;
+      color: var(--text);
     }
     .job__company .right {
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-muted);
-      letter-spacing: 0.06em;
+      letter-spacing: 0.04em;
       text-align: right;
       white-space: nowrap;
     }
@@ -255,8 +256,8 @@
       margin-bottom: 10px;
     }
     .role__title {
-      font-weight: 500;
-      font-size: 15px;
+      font-weight: 600;
+      font-size: 16.5px;
       color: var(--text);
       letter-spacing: -0.005em;
     }
@@ -268,7 +269,7 @@
     }
     .role__dates {
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-muted);
       white-space: nowrap;
     }
@@ -279,16 +280,16 @@
     }
     .role__list li {
       position: relative;
-      padding: 4px 0 4px 22px;
+      padding: 6px 0 6px 22px;
       color: var(--text-soft);
-      font-size: 15.5px;
-      line-height: 1.62;
+      font-size: 16.5px;
+      line-height: 1.6;
     }
     .role__list li::before {
       content: "";
       position: absolute;
       left: 0;
-      top: 16px;
+      top: 18px;
       width: 12px;
       height: 1px;
       background: var(--hairline-strong);
@@ -322,17 +323,17 @@
       margin-bottom: 6px;
     }
     .featured h3 {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-style: italic;
-      font-size: 36px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-style: normal;
+      font-size: 32px;
       margin: 0;
-      letter-spacing: -0.018em;
-      font-variation-settings: "opsz" 96;
+      letter-spacing: -0.022em;
+      color: var(--text);
     }
     .featured__link {
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 14px;
       color: var(--text-soft);
       border: none;
       border-bottom: 1px dotted var(--hairline-strong);
@@ -341,17 +342,17 @@
     .featured__link:hover { color: var(--accent); border-bottom-color: var(--accent); border-bottom-style: solid; }
     .featured__tag {
       font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.16em;
+      font-size: 12.5px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--text-muted);
-      margin-top: 4px;
+      margin-top: 6px;
     }
     .featured__body {
       margin: 18px 0 0;
-      font-size: 15.5px;
+      font-size: 16.5px;
       color: var(--text-soft);
-      line-height: 1.62;
+      line-height: 1.65;
     }
     .featured__body + .featured__body { margin-top: 14px; }
 
@@ -366,20 +367,20 @@
     .edu-row:last-child { border-bottom: none; }
     .edu-row__left h4 {
       margin: 0;
-      font-family: var(--font-display);
-      font-weight: 400;
+      font-family: var(--font-body);
+      font-weight: 500;
       font-size: 19px;
-      letter-spacing: -0.005em;
+      letter-spacing: -0.01em;
+      color: var(--text);
     }
     .edu-row__left p {
       margin: 4px 0 0;
-      font-size: 14px;
+      font-size: 14.5px;
       color: var(--text-muted);
-      font-style: italic;
     }
     .edu-row__dates {
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-muted);
       white-space: nowrap;
     }
@@ -389,15 +390,16 @@
     @media (max-width: 640px) { .skill-row { grid-template-columns: 1fr; gap: 6px; } }
     .skill-row__cat {
       font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.16em;
+      font-size: 12.5px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--text-muted);
+      font-weight: 500;
     }
     .skill-row__list {
       color: var(--text-soft);
-      font-size: 15.5px;
-      line-height: 1.55;
+      font-size: 16.5px;
+      line-height: 1.6;
     }
     .skill-row__list span { color: var(--text); font-weight: 400; }
     .skill-row__list span:not(:last-child)::after { content: " · "; color: var(--text-muted); margin: 0 2px; font-weight: 300; }
@@ -407,25 +409,25 @@
       padding: 16px 18px;
       border-left: 2px solid var(--hairline-strong);
       color: var(--text-soft);
-      font-size: 15.5px;
+      font-size: 16.5px;
       transition: border-color 200ms ease;
     }
     .ack-list li:hover { border-left-color: var(--accent); }
-    .ack-list em { font-style: italic; color: var(--text); }
+    .ack-list em { font-style: normal; font-weight: 600; color: var(--text); }
 
     .langs { display: flex; gap: 36px; flex-wrap: wrap; }
     .lang { display: flex; align-items: baseline; gap: 12px; }
     .lang__name {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-style: italic;
-      font-size: 22px;
-      letter-spacing: -0.01em;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 19px;
+      letter-spacing: -0.005em;
+      color: var(--text);
     }
     .lang__level {
       font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.16em;
+      font-size: 12.5px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--text-muted);
     }
@@ -439,8 +441,8 @@
       flex-wrap: wrap;
       gap: 12px;
       font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.1em;
+      font-size: 12px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--text-muted);
     }

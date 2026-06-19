@@ -1,0 +1,38 @@
+name: Build PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'cv.typ'
+      - 'fonts/**'
+      - '.github/workflows/build-pdf.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: typst-community/setup-typst@v4
+        with:
+          typst-version: '0.15.0'
+
+      - name: Compile CV
+        run: typst compile --font-path fonts cv.typ Fingerhut_Jordan_Resume.pdf
+
+      - name: Commit updated PDF
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- Fingerhut_Jordan_Resume.pdf; then
+            echo "PDF unchanged, skipping commit"
+          else
+            git add Fingerhut_Jordan_Resume.pdf
+            git commit -m "chore(ci): rebuild PDF [skip ci]"
+            git push
+          fi
