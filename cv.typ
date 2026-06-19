@@ -22,7 +22,7 @@
 
 = Summary
 
-Software Engineer with 8+ years of experience building large-scale applications that impact millions of users, focused on system architecture, scalability, reliability and AI-assisted development.
+Software Engineer with 8+ years of experience building large-scale fintech applications that impact millions of users, focused on system architecture, scalability, reliability and AI-assisted development.
 
 = Experience
 
