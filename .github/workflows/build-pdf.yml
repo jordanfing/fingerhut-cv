@@ -4,8 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - 'cv.typ'
-      - 'fonts/**'
+      - 'index.html'
+      - 'favicon.svg'
       - '.github/workflows/build-pdf.yml'
   workflow_dispatch:
 
@@ -18,12 +18,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: typst-community/setup-typst@v4
-        with:
-          typst-version: '0.15.0'
-
-      - name: Compile CV
-        run: typst compile --font-path fonts cv.typ Fingerhut_Jordan_Resume.pdf
+      - name: Print HTML to PDF via Chrome headless
+        run: |
+          google-chrome --headless --disable-gpu --no-sandbox \
+            --no-pdf-header-footer \
+            --virtual-time-budget=8000 \
+            --print-to-pdf=Fingerhut_Jordan_Resume.pdf \
+            "file://${{ github.workspace }}/index.html"
 
       - name: Commit updated PDF
         run: |

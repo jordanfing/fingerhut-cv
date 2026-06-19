@@ -15,14 +15,25 @@
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
+  <script>
+    (() => {
+      const params = new URLSearchParams(location.search);
+      const override = params.get('theme');
+      const stored = localStorage.getItem('cv-theme');
+      const sys = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      document.documentElement.dataset.theme = override || stored || sys;
+    })();
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,500&family=Geist:wght@300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
-    :root {
+    :root, :root[data-theme="dark"] {
       --bg: #0a0a0c;
       --bg-card: #111114;
+      --bg-fab: rgba(17, 17, 20, 0.78);
       --hairline: #1d1c1a;
       --hairline-strong: #2a2722;
       --text: #ffffff;
@@ -31,12 +42,32 @@
       --accent: #5fd687;
       --accent-dim: #2f6a44;
       --warn: #e87b6a;
+      --pulse-rgb: 95, 214, 135;
+      --aura-1: rgba(95, 214, 135, 0.06);
+      --aura-2: rgba(232, 123, 106, 0.04);
 
       --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
       --font-body: "Geist", "Geist Variable", -apple-system, BlinkMacSystemFont, sans-serif;
       --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
       --measure: 760px;
+    }
+
+    :root[data-theme="light"] {
+      --bg: #fafaf7;
+      --bg-card: #f1f1ec;
+      --bg-fab: rgba(255, 255, 255, 0.82);
+      --hairline: #e5e2da;
+      --hairline-strong: #c8c4b8;
+      --text: #0a0a0c;
+      --text-soft: #2f2f2f;
+      --text-muted: #5e5e5e;
+      --accent: #0a7a40;
+      --accent-dim: #066b34;
+      --warn: #b94a3a;
+      --pulse-rgb: 10, 122, 64;
+      --aura-1: rgba(10, 122, 64, 0.05);
+      --aura-2: rgba(185, 74, 58, 0.03);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -55,8 +86,8 @@
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
       background-image:
-        radial-gradient(1100px 600px at 80% -10%, rgba(95, 214, 135, 0.06), transparent 60%),
-        radial-gradient(900px 500px at -10% 110%, rgba(232, 123, 106, 0.04), transparent 60%);
+        radial-gradient(1100px 600px at 80% -10%, var(--aura-1), transparent 60%),
+        radial-gradient(900px 500px at -10% 110%, var(--aura-2), transparent 60%);
       background-attachment: fixed;
     }
 
@@ -71,11 +102,45 @@
     a:hover { color: var(--accent); border-bottom-color: var(--accent); }
     a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
 
-    .download-fab {
+    .fab-stack {
       position: fixed;
       top: 22px;
       right: 22px;
       z-index: 50;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .theme-toggle {
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      background: var(--bg-fab);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--hairline-strong);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 200ms ease, border-color 200ms ease, color 200ms ease;
+    }
+    .theme-toggle:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+    .theme-toggle svg { width: 16px; height: 16px; }
+    :root[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+    :root[data-theme="dark"] .theme-toggle .icon-moon,
+    :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+
+    .download-fab {
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -85,7 +150,7 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--text);
-      background: rgba(17, 17, 20, 0.78);
+      background: var(--bg-fab);
       backdrop-filter: blur(10px);
       border: 1px solid var(--hairline-strong);
       border-radius: 999px;
@@ -138,13 +203,13 @@
       height: 7px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 0 0 rgba(95, 214, 135, 0.6);
+      box-shadow: 0 0 0 0 rgba(var(--pulse-rgb), 0.6);
       animation: pulse 2.4s infinite;
     }
     @keyframes pulse {
-      0%   { box-shadow: 0 0 0 0 rgba(95, 214, 135, 0.55); }
-      70%  { box-shadow: 0 0 0 10px rgba(95, 214, 135, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(95, 214, 135, 0); }
+      0%   { box-shadow: 0 0 0 0 rgba(var(--pulse-rgb), 0.55); }
+      70%  { box-shadow: 0 0 0 10px rgba(var(--pulse-rgb), 0); }
+      100% { box-shadow: 0 0 0 0 rgba(var(--pulse-rgb), 0); }
     }
 
     .hero {
@@ -302,7 +367,7 @@
       padding: 36px 32px 34px;
       border: 1px solid var(--hairline-strong);
       border-radius: 6px;
-      background: linear-gradient(180deg, rgba(95, 214, 135, 0.035), transparent 60%), var(--bg-card);
+      background: linear-gradient(180deg, rgba(var(--pulse-rgb), 0.04), transparent 60%), var(--bg-card);
       overflow: hidden;
       transition: border-color 240ms ease, transform 240ms ease;
     }
@@ -451,20 +516,111 @@
 
     @media (max-width: 640px) {
       .wrap { padding: 80px 20px 80px; }
-      .download-fab { top: 14px; right: 14px; padding: 9px 13px; font-size: 11px; }
+      .fab-stack { top: 14px; right: 14px; gap: 6px; }
+      .download-fab { padding: 9px 13px; font-size: 11px; }
+      .theme-toggle { width: 34px; height: 34px; }
       .hero__name { font-size: clamp(48px, 13vw, 80px); }
       .job__company { flex-direction: column; gap: 4px; }
       .job__company .right { text-align: left; }
       .role__head { flex-direction: column; gap: 2px; align-items: flex-start; }
       .featured__head { flex-direction: column; }
     }
+
+    @media print {
+      :root, :root[data-theme="dark"], :root[data-theme="light"] {
+        --bg: #ffffff;
+        --bg-card: #f5f5f0;
+        --hairline: #e0e0e0;
+        --hairline-strong: #c0c0c0;
+        --text: #0a0a0c;
+        --text-soft: #2a2a2a;
+        --text-muted: #5e5e5e;
+        --accent: #0a7a40;
+        --accent-dim: #066b34;
+        --pulse-rgb: 10, 122, 64;
+        --aura-1: transparent;
+        --aura-2: transparent;
+      }
+
+      @page {
+        size: A4;
+        margin: 14mm;
+      }
+
+      html, body {
+        background: #ffffff !important;
+        background-image: none !important;
+      }
+
+      body { font-size: 11pt; line-height: 1.45; }
+
+      .fab-stack { display: none !important; }
+
+      .wrap { max-width: 100%; padding: 0 !important; margin: 0 !important; }
+
+      .stagger { opacity: 1 !important; transform: none !important; animation: none !important; }
+      .live::before { animation: none !important; box-shadow: none !important; }
+
+      .hero { padding-bottom: 10pt; border-bottom: 0.5pt solid var(--hairline-strong); }
+      .hero__name { font-size: 32pt !important; line-height: 1; margin-top: 4pt; }
+      .hero__role { font-size: 10.5pt; margin-top: 8pt; }
+      .hero__meta { font-size: 8.5pt; margin-top: 6pt; gap: 3pt 12pt; }
+      .hero__summary { font-size: 11pt; line-height: 1.45; margin-top: 10pt; max-width: 100%; }
+
+      section { padding-top: 14pt; }
+      .section-head { margin-bottom: 8pt; }
+      .section-head__index, .section-head__title { font-size: 9pt; }
+
+      .job + .job { margin-top: 12pt; padding-top: 12pt; }
+      .job__company h3 { font-size: 15pt; }
+      .job__company .right { font-size: 9pt; }
+
+      .role { break-inside: avoid; page-break-inside: avoid; }
+      .role + .role { margin-top: 10pt; }
+      .role__title { font-size: 11pt; }
+      .role__dates { font-size: 9pt; }
+      .role__list li { font-size: 10pt; line-height: 1.4; padding: 1.5pt 0 1.5pt 16pt; }
+      .role__list li::before { font-size: 9.5pt; top: 1pt; left: 2pt; }
+
+      .featured { break-inside: avoid; padding: 12pt 14pt; }
+      .featured h3 { font-size: 20pt; }
+      .featured__body { font-size: 10pt; line-height: 1.45; }
+
+      .edu-row { padding: 8pt 0; break-inside: avoid; }
+      .edu-row__left h4 { font-size: 11.5pt; }
+      .edu-row__left p { font-size: 9pt; }
+      .edu-row__dates { font-size: 9pt; }
+
+      .skills { gap: 12pt; }
+      .skill-row { grid-template-columns: 180px 1fr; gap: 16pt; align-items: baseline; break-inside: avoid; }
+      .skill-row__cat { font-size: 9pt; }
+      .skill-row__list { font-size: 10pt; line-height: 1.45; }
+
+      .ack-list { gap: 8pt; }
+      .ack-list li { font-size: 10pt; padding: 6pt 10pt; break-inside: avoid; }
+
+      .lang__name { font-size: 12.5pt; }
+      .lang__level { font-size: 9pt; }
+
+      footer { margin-top: 18pt; padding-top: 10pt; font-size: 8.5pt; break-inside: avoid; }
+
+      a { color: var(--text) !important; border-bottom: none !important; }
+      a[href^="http"]::after { content: " (" attr(href) ")"; font-family: var(--font-mono); font-size: 0.8em; color: var(--text-muted); }
+      .hero__meta a::after, .footer a::after, footer a::after, .featured__link::after { content: none !important; }
+    }
   </style>
 </head>
 <body>
-  <a class="download-fab" href="Fingerhut_Jordan_Resume.pdf" download>
-    Download PDF
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-  </a>
+  <div class="fab-stack">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <a class="download-fab" href="Fingerhut_Jordan_Resume.pdf" download>
+      Download PDF
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    </a>
+  </div>
 
   <main class="wrap">
     <header class="hero">
@@ -700,8 +856,17 @@
 
     <footer>
       <span>Source &nbsp;·&nbsp; <a href="https://github.com/jordanfing/fingerhut-cv" target="_blank" rel="noopener">github.com/jordanfing/fingerhut-cv</a></span>
-      <span>Written in Typst &nbsp;·&nbsp; 2026</span>
+      <span>Built with HTML + Chrome headless &nbsp;·&nbsp; 2026</span>
     </footer>
   </main>
+
+  <script>
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const root = document.documentElement;
+      const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+      root.dataset.theme = next;
+      localStorage.setItem('cv-theme', next);
+    });
+  </script>
 </body>
 </html>
