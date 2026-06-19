@@ -280,19 +280,19 @@
     }
     .role__list li {
       position: relative;
-      padding: 7px 0 7px 22px;
+      padding: 7px 0 7px 26px;
       color: var(--text-soft);
       font-size: 17.5px;
       line-height: 1.6;
     }
     .role__list li::before {
-      content: "";
+      content: "▸";
       position: absolute;
-      left: 0;
-      top: 21px;
-      width: 12px;
-      height: 1px;
-      background: var(--hairline-strong);
+      left: 4px;
+      top: 7px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--accent);
     }
 
     .job + .job { margin-top: 56px; padding-top: 56px; border-top: 1px solid var(--hairline); }
